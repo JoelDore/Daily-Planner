@@ -13,9 +13,6 @@ function updateTime() {
 // Update #currentDay textContent as 'dddd, MMMM Do'
 $("#currentDay").text(currentDate);
 
-// * Assign HTML ids to buttons, textareas *
-// // (indicate timeblock in 24-hr)
-
 // .saveBtn event listener
 // // update local storage with stringified {btn id, textarea(id).text}
 
