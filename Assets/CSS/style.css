@@ -20,7 +20,8 @@ textarea{
   border-radius: 0;
   border-bottom: 10px solid black;
 }
-/* ? Event description ? */
+
+/* Event descriptions */
 .description{
   white-space: pre-wrap;
 }
@@ -40,6 +41,7 @@ textarea{
   background-color: #ffffff;
   color: #000000;
   border-top: 1px dashed #000000;
+  padding-top: 10px;
 }
 
 /* Time-based color classes*/
@@ -58,16 +60,17 @@ textarea{
   color: white;
 }
 
-/* Save button styling */
+/* Save Button styling */
 .saveBtn {
   border-left: 1px solid black;
   border-top-right-radius: 15px;
   border-bottom-right-radius: 15px;
   background-color: #06AED5;
+  font-size: 20px;
   color: white;
 }
 
 .saveBtn i:hover {
-  font-size: 20px;
+  font-size: 25px;
   transition: all .3s ease-in-out;
 }
