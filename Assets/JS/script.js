@@ -2,11 +2,18 @@
 let currentDate = moment().format("dddd, MMMM Do");
 let currentTime = moment().format("HH:mm:ss");
 let currentHour = moment().format("HH");
+
 const timeBlockArray = ['09', '10', '11', '12', '13', '14', '15', '16', '17'];
+
 updateDateText();
 updateTime();
 loadEvents();
 colorCode();
+
+// Update #currentDay text
+function updateDateText() {
+    $("#currentDay").text(currentDate);
+}
 
 // Update time every second
 function updateTime() {
@@ -19,11 +26,6 @@ function updateTime() {
             updateDateText();
         }
     }, 1000);
-}
-
-// Update #currentDay text
-function updateDateText() {
-    $("#currentDay").text(currentDate);
 }
 
 // Populate existing stored data to textareas
@@ -39,15 +41,6 @@ function loadEvents() {
     }
 }
 
-$(".saveBtn").click(function () {
-    // get hour from button value
-    let hour = $(this).val();
-    // get corresponding textarea by id
-    let eventText = $(`#${hour}`).val();
-    // Update local storage with {hour: eventText}
-    localStorage.setItem(hour, eventText)
-})
-
 function colorCode() {
     // For all time blocks:
     for (const id of timeBlockArray) {
@@ -62,3 +55,12 @@ function colorCode() {
         }
     }
 }
+
+$(".saveBtn").click(function () {
+    // get hour from button value
+    let hour = $(this).val();
+    // get corresponding textarea by id
+    let eventText = $(`#${hour}`).val();
+    // Update local storage with {hour: eventText}
+    localStorage.setItem(hour, eventText)
+})
