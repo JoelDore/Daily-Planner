@@ -13,9 +13,16 @@ function updateTime() {
 // Update #currentDay textContent as 'dddd, MMMM Do'
 $("#currentDay").text(currentDate);
 
-// .saveBtn event listener
-// // update local storage with stringified {btn id, textarea(id).text}
+$(".saveBtn").click(function () {
+    // get hour from button value
+    let hour = $(this).val();
+    // get corresponding textarea by id
+    let eventText = $(`#${hour}`).val();
+    // Update local storage with {hour: eventText}
+    localStorage.setItem(hour, eventText)
+})
 
+// For all text areas:
 // If #id (24-hr) isBefore/isSame/isAfter current HH  
 // Then update color of textarea to .past/.present/.future
 
