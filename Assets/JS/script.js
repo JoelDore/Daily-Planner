@@ -1,9 +1,11 @@
 // Assign current date/time to variables
 let currentDate = moment().format("dddd, MMMM Do");
 let currentTime = moment().format("HH:mm:ss");
+let currentHour = moment().format("HH");
 const timeBlockArray = ['09', '10', '11', '12', '13', '14', '15', '16', '17'];
 updateTime();
 loadEvents();
+colorCode();
 
 // Update time every second
 function updateTime() {
@@ -34,9 +36,20 @@ $(".saveBtn").click(function () {
     localStorage.setItem(hour, eventText)
 })
 
-// For all text areas:
-// If #id (24-hr) isBefore/isSame/isAfter current HH  
-// Then update color of textarea to .past/.present/.future
+function colorCode() {
+    // For all time blocks:
+    for (const id of timeBlockArray) {
+        // If #id (24-hr) is before/same/after currentHour
+        // Then update color of textarea to .past/.present/.future
+        if (id < currentHour) {
+            $(`#${id}`).addClass('past')
+        } else if (id === currentHour) {
+            $(`#${id}`).addClass('present')
+        } else if (id > currentHour) {
+            $(`#${id}`).addClass('future')
+        }
+    }
+}
 
 // If current HH:mm:ss isSame 00:00:00
 // Then reset localstorage, textareas, #currentDay
