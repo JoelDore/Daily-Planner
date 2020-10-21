@@ -3,6 +3,7 @@ let currentDate = moment().format("dddd, MMMM Do");
 let currentTime = moment().format("HH:mm:ss");
 let currentHour = moment().format("HH");
 const timeBlockArray = ['09', '10', '11', '12', '13', '14', '15', '16', '17'];
+updateDateText();
 updateTime();
 loadEvents();
 colorCode();
@@ -11,11 +12,19 @@ colorCode();
 function updateTime() {
     setInterval(() => {
         currentTime = moment().format("HH:mm:ss");
+        // Clear localstorage, textareas, #currentDay at midnight
+        if (currentTime === "00:00:00") {
+            localStorage.clear();
+            loadEvents();
+            updateDateText();
+        }
     }, 1000);
 }
 
-// Update #currentDay textContent as 'dddd, MMMM Do'
-$("#currentDay").text(currentDate);
+// Update #currentDay text
+function updateDateText() {
+    $("#currentDay").text(currentDate);
+}
 
 // Populate existing stored data to textareas
 function loadEvents() {
@@ -23,6 +32,9 @@ function loadEvents() {
         let savedEvent = localStorage.getItem(key)
         if (savedEvent !== null) {
             $(`#${key}`).val(savedEvent)
+        } else {
+            // clear text fields if storage has been cleared
+            $(`#${key}`).val('')
         }
     }
 }
@@ -50,10 +62,3 @@ function colorCode() {
         }
     }
 }
-
-// If current HH:mm:ss isSame 00:00:00
-// Then reset localstorage, textareas, #currentDay
-// (check Moment documentation for date change methods)
-
-
-/* handle editing text, NOT saving, exiting textarea? */
