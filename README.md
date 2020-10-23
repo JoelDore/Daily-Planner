@@ -37,7 +37,8 @@ This project is [MIT](https://github.com/JoelDore/Daily-Planner/blob/main/LICENS
 
 ---
 <br>
-<div style="text-align:center">
+
+<div align="center">
 
 [![github](Assets/Images/github.svg)](https://github.com/JoelDore) 
 [![linkedin](Assets/Images/linkedin.svg)](http://www.linkedin.com/in/joeldore) 
