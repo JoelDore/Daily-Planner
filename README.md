@@ -21,8 +21,8 @@ Currently deployed at [GitHub Pages](https://joeldore.github.io/Daily-Planner/)
 - Easily save events to local storage for future access
 ---
 
-## Results
-- 
+## Reflection
+- Working with Moment.js was simpler than JavaScript date methods, but in the future I may look into modern alternatives (e.g. Day.js).
 - The condensed format of jQuery allowed me to better organize logic and build the desired functionality more quickly than vanilla JavaScript
 
 ---
