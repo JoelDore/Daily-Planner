@@ -4,6 +4,7 @@ let currentTime = moment().format("HH:mm:ss");
 let currentHour = moment().format("HH");
 
 const timeBlockArray = ['09', '10', '11', '12', '13', '14', '15', '16', '17'];
+let eventsObject = {}
 
 updateDateText();
 updateTime();
@@ -28,12 +29,13 @@ function updateTime() {
     }, 1000);
 }
 
-// Populate existing stored data to textareas
+// Populate existing stored object properties to textareas
 function loadEvents() {
-    for (const key of timeBlockArray) {
-        let savedEvent = localStorage.getItem(key)
-        if (savedEvent !== null) {
-            $(`#${key}`).val(savedEvent)
+    eventsObject = JSON.parse(localStorage.getItem('eventsObject')) || {};
+    console.log(eventsObject)
+    for (const key in eventsObject) {
+        if (key) {
+            $(`#${key}`).val(eventsObject[key])
         } else {
             // clear text fields if storage has been cleared
             $(`#${key}`).val('')
@@ -58,9 +60,10 @@ function colorCode() {
 
 $(".saveBtn").click(function () {
     // get hour from button value
-    let hour = $(this).val();
+    let hourID = $(this).val();
     // get corresponding textarea by id
-    let eventText = $(`#${hour}`).val();
-    // Update local storage with {hour: eventText}
-    localStorage.setItem(hour, eventText)
+    let eventText = $(`#${hourID}`).val();
+    // Update local storage object with {hourID: eventText}
+    eventsObject[hourID] = eventText;
+    localStorage.setItem('eventsObject', JSON.stringify(eventsObject));
 })
