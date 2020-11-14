@@ -57,6 +57,8 @@ body {
 /* Time-based color classes*/
 .past {
   background-color: hsl(0, 0%, 87%);
+  color: gray;
+  text-decoration: line-through;
 }
 
 .present {
